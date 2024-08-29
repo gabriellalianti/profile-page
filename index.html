@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaby's Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="header">
+    <button class="chaos-button">Toggle Discord</button>
+    <nav class="navbar">
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#opinion">Opinion</a>
+      <a href="#story">Story</a>
+    </nav>
+  </header>
+
+  <div class="page-container">
+    <h1 class="chaos-default">Hello!</h1>
+
+    <div class="small-text chaos-default" id="opening-text">This page is created with the given theme of
+      harmony/discord. Press play below for some music!</div>
+
+    <audio controls loop class="chaos-default">
+      <source src="assets/audio/acnh-song.mp3" id="anch-song">
+    </audio>
+
+    <div class="general-container chaos-default">
+      <div class="general-content">
+        <p>I'm Gabriella, but you can call me Gaby. I'm currently a second year first term Computer Science student.
+          <br> Welcome to my profile page!
+        </p>
+        <img src="assets/images/fuji.png" id="fuji-img" class="chaos-2">
+        <p class="show-in-chaos">FUJI!!!!!!! SOMEBODY CATCH HER!!!<br><em> CHASE AND KEEP CLICKING!</em></p>
+        <p class="phew">Phew!</p>
+        <div id="about"></div>
+      </div>
+    </div>
+
+    <div class="general-container chaos-3">
+      <div class="general-content chaos-default">
+        <h2>About me</h2>
+        <ul class="chaos-1">
+          <li>Name: Gabriella Lianti</li>
+          <li>Age: 18</li>
+          <li>Program: Bachelor of Computer Science</li>
+          <li>Games (on and off): Valorant, Minecraft, ACNH, Fallout Shelter 🧍🏻‍♀️</li>
+          <li>Current favourite song: Iris by The Goo Goo Dolls!</li>
+          <li>Favourite meal on campus: Southern Wok Mapo Tofu</li>
+          <hr>
+          <li>The picture up there is of my dog, Fuji!</li>
+          <li>I hate actual tomatoes but loved FROZEN tomato juice</li>
+          <li>Managed to snatch my @ on discord which is just my first name backwards (gabriella -> alleirbag)
+            🗣️👆🏼
+          </li>
+          <li>Discord light mode tolerator</li>
+          <div id="opinion"></div>
+        </ul>
+      </div>
+    </div>
+
+    <div class="general-container chaos-4">
+      <div class="general-content">
+        <h2>Opinions, Opinions</h2>
+        <p> My take on the 'is hot dog a sandwich' question since I think it's worth the talk 🎙️</p>
+        <div id="hotdog"></div>
+        <div id="story"></div>
+        <div class="small-text">hover^</div>
+      </div>
+    </div>
+
+    <div class="general-container chaos-2">
+      <div class="general-content">
+        <h2>Let me read you a story</h2>
+        <div class="story-content">
+          <img src="assets/images/lectern.png" id="lectern-img">
+          <p>Long ago, the elements lived together in harmony. Then,
+            everything changed
+            when you.. pressed the yellow discord button..? (mind your volume!)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="general-container chaos-3">
+      <div id="links-content">
+        <a href="https://github.com/gabriellalianti" target="_blank"><img src="assets/images/github-logo.png"
+            class="logos"></a>
+        <a href="https://www.linkedin.com/in/gabriellalianti" target="_blank"><img src="assets/images/linkedin-logo.png"
+            class="logos"></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    All images (except of my dog and the forms screenshot), logos, and sounds used on this website are the property of
+    their respective owners. <br>
+    No
+    copyright
+    infringement is intended.
+  </footer>
+
+  <script>
+    var music = new Audio('assets/audio/pedro-song.mp3');
+    music.loop = true;
+    const acnhSong = document.querySelector('audio.chaos-default');
+
+    // chaos trigger
+    document.querySelector('.chaos-button').addEventListener('click', function () {
+      const pageContainer = document.querySelector('.page-container');
+      const chaosElements = document.querySelectorAll('.chaos-default, .chaos-1, .chaos-2, .chaos-3, .chaos-4');
+      const showInChaos = document.querySelector('.show-in-chaos');
+      const body = document.body;
+      const fujiImg = document.getElementById('fuji-img');
+
+      if (pageContainer.classList.contains('chaos-mode')) {
+        pageContainer.classList.remove('chaos-mode');
+        body.classList.remove('chaos-mode');
+        showInChaos.classList.remove('chaos-mode');
+        chaosElements.forEach(el => el.classList.remove('chaos-mode'));
+        document.querySelector('.show-in-chaos').style.display = 'none';
+        document.querySelector('.phew').style.display = 'none';
+
+        acnhSong.play();
+
+        var audio = new Audio('assets/audio/discord-leave.mp3');
+        audio.play();
+        music.pause();
+        music.currentTime = 0;
+
+      } else {
+        // enter chaos
+        pageContainer.classList.add('chaos-mode');
+        body.classList.add('chaos-mode');
+        showInChaos.classList.add('chaos-mode');
+        chaosElements.forEach(el => el.classList.add('chaos-mode'));
+
+        fujiImg.classList.remove('chaos-default');
+        fujiImg.classList.add('chaos-2');
+        showInChaos.style.display = 'block'; // reset to default display
+
+        acnhSong.pause();
+        var audio = new Audio('assets/audio/discord-join.mp3');
+        audio.play();
+        music.play();
+      }
+    });
+
+    // catch fuji
+    document.getElementById('fuji-img').addEventListener('click', function () {
+      if (document.querySelector('.page-container').classList.contains('chaos-mode')) {
+        this.classList.remove('chaos-2');
+        document.querySelector('.show-in-chaos').style.display = 'none';
+        document.querySelector('.phew').style.display = 'block';
+        var audio = new Audio('assets/audio/pew.mp3');
+        audio.play();
+      }
+    });
+
+    // // discord hover
+    // let hoverTimer; // i <3 timers
+    // document.getElementById("discord-war-cat").addEventListener("mouseover", () => {
+    //   hoverTimer = setTimeout(() => {
+    //     var audio = new Audio('assets/images/war-cat.mp3');
+    //     audio.play();
+    //   }, 375); // 0.375s delay
+    // });
+    // document.getElementById("discord-war-cat").addEventListener("mouseout", () => {
+    //   clearTimeout(hoverTimer); // cancel if hover is <0.375s
+    // });
+
+
+    // discord gif
+    // document.getElementById("discord-image-gif").addEventListener("mouseover", () => {
+    //   var video = document.getElementById("valorant-video");
+    //   video.play();
+    //   video.loop = true;
+    // });
+    // document.getElementById("discord-image-gif").addEventListener("mouseout", () => {
+    //   var video = document.getElementById("valorant-video");
+    //   video.pause();
+    //   video.currentTime = 0;
+    // });
+  </script>
+</body>
+
+</html>
