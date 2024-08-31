@@ -48,13 +48,13 @@ audio {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 5px 100px;
+  padding: 5px 5%;
   background-color: #36393e;
   display: flex;
   justify-content: space-between;
   z-index: 100;
-  min-width: 700px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .name {
@@ -315,6 +315,25 @@ body.chaos-mode {
   align-items: center;
 }
 
+#give-up-button {
+  display: none;
+  padding: 10px;
+  margin: 10px 0;
+  width: 50%;
+  background-color: #ff4444;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#give-up-button:hover {
+  background-color: #cc0000;
+}
+
 #fuji-img {
   height: 280px;
   width: 200px;
@@ -370,4 +389,88 @@ body.chaos-mode {
 footer {
   color: white;
   margin-bottom: 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+  body {
+    padding-top: 80px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .header {
+    flex-direction: column;
+    padding: 10px 5%;
+  }
+
+  .navbar {
+    margin-top: 10px;
+  }
+
+  .navbar a {
+    margin-left: 20px;
+    font-size: 16px;
+  }
+
+  .general-content {
+    width: 95%;
+    padding: 15px;
+    margin: 20px 10px;
+  }
+
+  .story-content {
+    flex-direction: column;
+  }
+
+  #fuji-img,
+  #lectern-img {
+    height: auto;
+    width: 80%;
+    max-width: 200px;
+  }
+
+  #hotdog {
+    width: 100%;
+    height: 150px;
+  }
+
+  #links-content {
+    width: 90%;
+    gap: 10px;
+  }
+
+  .logos {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    padding-top: 60px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .navbar a {
+    margin-left: 15px;
+    font-size: 14px;
+  }
+
+  .general-content {
+    padding: 10px;
+  }
+
+  #give-up-button {
+    width: 80%;
+  }
+
+  #links-content {
+    flex-wrap: wrap;
+  }
 }

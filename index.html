@@ -36,6 +36,7 @@
         </p>
         <img src="assets/images/fuji.png" id="fuji-img" class="chaos-2">
         <p class="show-in-chaos">FUJI!!!!!!! SOMEBODY CATCH HER!!!<br><em> CHASE AND KEEP CLICKING!</em></p>
+        <button id="give-up-button">Give up</button>
         <p class="phew">Phew!</p>
         <div id="about"></div>
       </div>
@@ -115,14 +116,17 @@
       const showInChaos = document.querySelector('.show-in-chaos');
       const body = document.body;
       const fujiImg = document.getElementById('fuji-img');
+      const giveUpButton = document.getElementById('give-up-button');
 
       if (pageContainer.classList.contains('chaos-mode')) {
+        // go back to normal
         pageContainer.classList.remove('chaos-mode');
         body.classList.remove('chaos-mode');
         showInChaos.classList.remove('chaos-mode');
         chaosElements.forEach(el => el.classList.remove('chaos-mode'));
         document.querySelector('.show-in-chaos').style.display = 'none';
         document.querySelector('.phew').style.display = 'none';
+        giveUpButton.style.display = 'none';
 
         acnhSong.play();
 
@@ -140,7 +144,8 @@
 
         fujiImg.classList.remove('chaos-default');
         fujiImg.classList.add('chaos-2');
-        showInChaos.style.display = 'block'; // reset to default display
+        showInChaos.style.display = 'block';
+        giveUpButton.style.display = 'block';
 
         acnhSong.pause();
         var audio = new Audio('assets/audio/discord-join.mp3');
@@ -150,15 +155,19 @@
     });
 
     // catch fuji
-    document.getElementById('fuji-img').addEventListener('click', function () {
+    document.getElementById('fuji-img').addEventListener('click', catchFuji);
+    document.getElementById('give-up-button').addEventListener('click', catchFuji);
+
+    function catchFuji() {
       if (document.querySelector('.page-container').classList.contains('chaos-mode')) {
-        this.classList.remove('chaos-2');
+        document.getElementById('fuji-img').classList.remove('chaos-2');
         document.querySelector('.show-in-chaos').style.display = 'none';
+        document.getElementById('give-up-button').style.display = 'none';
         document.querySelector('.phew').style.display = 'block';
         var audio = new Audio('assets/audio/pew.mp3');
         audio.play();
       }
-    });
+    }
 
     // // discord hover
     // let hoverTimer; // i <3 timers
