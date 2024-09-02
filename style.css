@@ -376,7 +376,7 @@ body.chaos-mode {
 #hotdog:hover {
   background-image: url(assets/images/hotdog.png);
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
 }
 
@@ -507,5 +507,12 @@ footer {
     font-size: 10px;
     width: 80%;
     margin-top: -30px;
+  }
+
+  #hotdog:focus {
+    background-image: url(assets/images/hotdog.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 }
