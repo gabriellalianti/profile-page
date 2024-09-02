@@ -12,10 +12,15 @@
   <header class="header">
     <button class="chaos-button">Toggle Discord</button>
     <nav class="navbar">
-      <a href="#">Home</a>
-      <a href="#about">About</a>
-      <a href="#opinion">Opinion</a>
-      <a href="#story">Story</a>
+      <button class="nav-toggle" aria-label="toggle navigation">
+        ☰
+      </button>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#opinion">Opinion</a>
+        <a href="#story">Story</a>
+      </div>
     </nav>
   </header>
 
@@ -97,14 +102,24 @@
   </div>
 
   <footer>
-    All images (except of my dog and the forms screenshot), logos, and sounds used on this website are the property of
+    <p></p>All images (except of my dog and the forms screenshot), logos, and sounds used on this website are the
+    property of
     their respective owners. <br>
     No
     copyright
-    infringement is intended.
+    infringement is intended.</p>
   </footer>
 
   <script>
+    // nav hamburger menu for smaller screens
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // music
     var music = new Audio('assets/audio/pedro-song.mp3');
     music.loop = true;
     const acnhSong = document.querySelector('audio.chaos-default');
@@ -119,7 +134,7 @@
       const giveUpButton = document.getElementById('give-up-button');
 
       if (pageContainer.classList.contains('chaos-mode')) {
-        // go back to normal
+        // back to normal
         pageContainer.classList.remove('chaos-mode');
         body.classList.remove('chaos-mode');
         showInChaos.classList.remove('chaos-mode');
@@ -180,7 +195,6 @@
     // document.getElementById("discord-war-cat").addEventListener("mouseout", () => {
     //   clearTimeout(hoverTimer); // cancel if hover is <0.375s
     // });
-
 
     // discord gif
     // document.getElementById("discord-image-gif").addEventListener("mouseover", () => {
